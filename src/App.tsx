@@ -6,6 +6,8 @@ import { GlobalStatusStrip } from './components/layout/GlobalStatusStrip';
 import { P6PayloadDrawer } from './components/drawers/P6PayloadDrawer';
 import { EvidenceTraceDrawer } from './components/drawers/EvidenceTraceDrawer';
 import { DemoOverlay } from './components/layout/DemoOverlay';
+import { DataIngestionView } from './views/DataIngestionView';
+import { ExtractionWorkspaceView } from './views/ExtractionWorkspaceView';
 
 const ViewPlaceholder: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
   <div style={{
@@ -65,11 +67,11 @@ const AppContent: React.FC = () => {
       case 'dashboard':
         return <ViewPlaceholder title="Executive Dashboard" subtitle="High-level project KPIs, progress vs baseline, and risk indicators." />;
       case 'capture':
-        return <ViewPlaceholder title="Field Data Ingestion" subtitle="Multi-channel field log capture (CSV, text logs, voice memos, site photos)." />;
+        return <DataIngestionView />;
       case 'agent':
         return <ViewPlaceholder title="AI Time Agent" subtitle="Conversational schedule intelligence, query resolution, and timeline simulations." />;
       case 'extract':
-        return <ViewPlaceholder title="Extraction Workspace" subtitle="OCR and NLP extraction of quantities, locations, and trade activities." />;
+        return <ExtractionWorkspaceView />;
       case 'link':
         return <ViewPlaceholder title="Schedule Linker" subtitle="Primavera P6 activity matching and schedule alignment." />;
       case 'review':
