@@ -9,6 +9,8 @@ import { DemoOverlay } from './components/layout/DemoOverlay';
 import { DataIngestionView } from './views/DataIngestionView';
 import { ExtractionWorkspaceView } from './views/ExtractionWorkspaceView';
 import { ScheduleLinkerView } from './views/ScheduleLinkerView';
+import { PlannerReviewQueueView } from './views/PlannerReviewQueueView';
+import { AuditTrailView } from './views/AuditTrailView';
 
 const ViewPlaceholder: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
   <div style={{
@@ -76,11 +78,11 @@ const AppContent: React.FC = () => {
       case 'link':
         return <ScheduleLinkerView />;
       case 'review':
-        return <ViewPlaceholder title="Planner Review Queue" subtitle="Verification gate for quantity sign-offs and variance reviews." />;
+        return <PlannerReviewQueueView />;
       case 'schedule':
         return <ViewPlaceholder title="Live Schedule Gantt" subtitle="Visual Gantt chart comparison of baseline vs actual schedule." />;
       case 'audit':
-        return <ViewPlaceholder title="Audit Trail" subtitle="Immutable cryptographic log of all progress modifications and approvals." />;
+        return <AuditTrailView />;
       case 'analytics':
         return <ViewPlaceholder title="Predictive Analytics" subtitle="Trend forecasting, delay patterns, and critical path risk analysis." />;
       case 'memory':
