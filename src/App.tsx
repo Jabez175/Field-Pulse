@@ -14,6 +14,8 @@ import { AuditTrailView } from './views/AuditTrailView';
 import { DashboardView } from './views/DashboardView';
 import { LiveScheduleGanttView } from './views/LiveScheduleGanttView';
 import { AnalyticsView } from './views/AnalyticsView';
+import { TimeAgentView } from './views/TimeAgentView';
+import { ProjectMemoryView } from './views/ProjectMemoryView';
 
 const ViewPlaceholder: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
   <div style={{
@@ -75,7 +77,7 @@ const AppContent: React.FC = () => {
       case 'capture':
         return <DataIngestionView />;
       case 'agent':
-        return <ViewPlaceholder title="AI Time Agent" subtitle="Conversational schedule intelligence, query resolution, and timeline simulations." />;
+        return <TimeAgentView />;
       case 'extract':
         return <ExtractionWorkspaceView />;
       case 'link':
@@ -89,7 +91,7 @@ const AppContent: React.FC = () => {
       case 'analytics':
         return <AnalyticsView />;
       case 'memory':
-        return <ViewPlaceholder title="Institutional Project Memory" subtitle="Historical dispute and delay records across infrastructure projects." />;
+        return <ProjectMemoryView />;
       default:
         return <ViewPlaceholder title="FieldPulse System" subtitle="Select a workflow step from the top navigation rail." />;
     }
