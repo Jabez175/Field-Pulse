@@ -1,63 +1,28 @@
 import React from 'react';
-import { AppProvider, useApp, AppView } from './context/AppContext';
+import { AppProvider, useApp } from './context/AppContext';
 import { TopBar } from './components/layout/TopBar';
 import { TopNavigation } from './components/layout/TopNavigation';
 import { GlobalStatusStrip } from './components/layout/GlobalStatusStrip';
-import { P6PayloadDrawer } from './components/drawers/P6PayloadDrawer';
-import { EvidenceTraceDrawer } from './components/drawers/EvidenceTraceDrawer';
-import { DemoOverlay } from './components/layout/DemoOverlay';
+
 import { DataIngestionView } from './views/DataIngestionView';
+import { TimeAgentView } from './views/TimeAgentView';
 import { ExtractionWorkspaceView } from './views/ExtractionWorkspaceView';
 import { ScheduleLinkerView } from './views/ScheduleLinkerView';
 import { PlannerReviewQueueView } from './views/PlannerReviewQueueView';
-import { AuditTrailView } from './views/AuditTrailView';
-import { DashboardView } from './views/DashboardView';
 import { LiveScheduleGanttView } from './views/LiveScheduleGanttView';
 import { AnalyticsView } from './views/AnalyticsView';
-import { TimeAgentView } from './views/TimeAgentView';
+import { AuditTrailView } from './views/AuditTrailView';
 import { ProjectMemoryView } from './views/ProjectMemoryView';
 
-const ViewPlaceholder: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '400px',
-    padding: '3rem',
-    background: 'var(--bg-surface, #1e293b)',
-    borderRadius: '12px',
-    border: '1px dashed var(--border-color, #334155)',
-    textAlign: 'center',
-    maxWidth: '700px',
-    margin: '40px auto'
-  }}>
-    <div style={{
-      width: '56px',
-      height: '56px',
-      borderRadius: '12px',
-      background: 'rgba(59, 130, 246, 0.1)',
-      color: '#3b82f6',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: '1rem',
-      fontWeight: 'bold',
-      fontSize: '1.25rem'
-    }}>
-      FP
-    </div>
-    <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
-      {title}
-    </h2>
-    <p style={{ color: 'var(--text-muted, #94a3b8)', fontSize: '0.95rem', maxWidth: '500px', lineHeight: 1.6 }}>
-      {subtitle}
-    </p>
-    <div style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: '#60a5fa', background: 'rgba(59, 130, 246, 0.1)', padding: '6px 14px', borderRadius: '9999px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
-      Feature Module Scheduled for Sequential Merge
-    </div>
-  </div>
-);
+import { DashboardView } from './views/DashboardView';
+import { StoryProblemView } from './views/StoryProblemView';
+import { StoryArchitectureView } from './views/StoryArchitectureView';
+import { StoryFeasibilityView } from './views/StoryFeasibilityView';
+import { StoryImpactView } from './views/StoryImpactView';
+
+import { P6PayloadDrawer } from './components/drawers/P6PayloadDrawer';
+import { EvidenceTraceDrawer } from './components/drawers/EvidenceTraceDrawer';
+import { DemoOverlay } from './components/layout/DemoOverlay';
 
 const AppContent: React.FC = () => {
   const { 
@@ -92,8 +57,16 @@ const AppContent: React.FC = () => {
         return <AnalyticsView />;
       case 'memory':
         return <ProjectMemoryView />;
+      case 'story-problem':
+        return <StoryProblemView />;
+      case 'story-architecture':
+        return <StoryArchitectureView />;
+      case 'story-feasibility':
+        return <StoryFeasibilityView />;
+      case 'story-impact':
+        return <StoryImpactView />;
       default:
-        return <ViewPlaceholder title="FieldPulse System" subtitle="Select a workflow step from the top navigation rail." />;
+        return <DashboardView />;
     }
   };
 
