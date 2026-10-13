@@ -11,6 +11,9 @@ import { ExtractionWorkspaceView } from './views/ExtractionWorkspaceView';
 import { ScheduleLinkerView } from './views/ScheduleLinkerView';
 import { PlannerReviewQueueView } from './views/PlannerReviewQueueView';
 import { AuditTrailView } from './views/AuditTrailView';
+import { DashboardView } from './views/DashboardView';
+import { LiveScheduleGanttView } from './views/LiveScheduleGanttView';
+import { AnalyticsView } from './views/AnalyticsView';
 
 const ViewPlaceholder: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
   <div style={{
@@ -68,7 +71,7 @@ const AppContent: React.FC = () => {
   const renderActiveView = () => {
     switch (activeView) {
       case 'dashboard':
-        return <ViewPlaceholder title="Executive Dashboard" subtitle="High-level project KPIs, progress vs baseline, and risk indicators." />;
+        return <DashboardView />;
       case 'capture':
         return <DataIngestionView />;
       case 'agent':
@@ -80,11 +83,11 @@ const AppContent: React.FC = () => {
       case 'review':
         return <PlannerReviewQueueView />;
       case 'schedule':
-        return <ViewPlaceholder title="Live Schedule Gantt" subtitle="Visual Gantt chart comparison of baseline vs actual schedule." />;
+        return <LiveScheduleGanttView />;
       case 'audit':
         return <AuditTrailView />;
       case 'analytics':
-        return <ViewPlaceholder title="Predictive Analytics" subtitle="Trend forecasting, delay patterns, and critical path risk analysis." />;
+        return <AnalyticsView />;
       case 'memory':
         return <ViewPlaceholder title="Institutional Project Memory" subtitle="Historical dispute and delay records across infrastructure projects." />;
       default:
